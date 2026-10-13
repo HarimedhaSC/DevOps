@@ -1,0 +1,171 @@
+PS C:\Users\Harimedha\OneDrive\Desktop\Docker-Networking-Lab> docker network inspect my-bridge-net
+[
+    {
+        "Name": "my-bridge-net",
+        "Id": "f32d46277ff69a0e6eff0387ca5537d5525f937935f7d367f902fb08f0ce239e",
+        "Created": "2026-10-11T14:11:18.600148577Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {},
+        "Containers": {
+            "1d272755e4a183d461de666126cda663e3a72cbfc944b1e36ecc886486060b1f": {
+                "Name": "flask",
+                "EndpointID": "8af69385079a7e3102a43bd23fea6ec68a4880db31cfe957f412f1fbf8d7cf9c",
+                "MacAddress": "b2:8f:d1:7a:6f:80",
+                "IPv4Address": "172.19.0.4/16",
+                "IPv6Address": ""
+            },
+            "28a40c0779f77b4d77243c348a4b857842bd83158f0e167f40aa58a171154028": {
+                "Name": "mysql",
+                "EndpointID": "17a8087a4fb4a1ac4b536e86f0cfcb936358d30a2714910fd2345896c9c29eab",
+                "MacAddress": "9a:5a:fa:8e:62:a7",
+                "IPv4Address": "172.19.0.2/16",
+                "IPv6Address": ""
+            },
+            "462aeedee3730b402685f30ce0ee443ddec9f8eb60224e074674f9408482f777": {
+                "Name": "redis",
+                "EndpointID": "08aacaff285999d33f92993e8ae6dfcbd31156c5e3ee4331c4fafac3e1052518",
+                "MacAddress": "42:85:1d:c3:44:6b",
+                "IPv4Address": "172.19.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.19.0.0/16": {
+                        "IPsInUse": 6,
+                        "DynamicIPsAvailable": 65530
+                    }
+                }
+            }
+        }
+    }
+]
+
+
+
+PS C:\Users\Harimedha\OneDrive\Desktop\Docker-Networking-Lab> docker network ls
+NETWORK ID     NAME              DRIVER    SCOPE
+4f9ee5afe57c   bridge            bridge    local
+5f982c73b31e   envsync_default   bridge    local
+c0e38ea7aac3   host              host      local
+6dde972d8f4a   minikube          bridge    local
+f32d46277ff6   my-bridge-net     bridge    local
+126aae9f41e4   none              null      local
+
+
+PS C:\Users\Harimedha\OneDrive\Desktop\Docker-Networking-Lab> docker network inspect my-bridge-net
+[
+    {
+        "Name": "my-bridge-net",
+        "Id": "f32d46277ff69a0e6eff0387ca5537d5525f937935f7d367f902fb08f0ce239e",
+        "Created": "2026-10-11T14:11:18.600148577Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.19.0.0/16",
+                    "Gateway": "172.19.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {},
+        "Containers": {
+            "1d272755e4a183d461de666126cda663e3a72cbfc944b1e36ecc886486060b1f": {
+                "Name": "flask",
+                "EndpointID": "8af69385079a7e3102a43bd23fea6ec68a4880db31cfe957f412f1fbf8d7cf9c",
+                "MacAddress": "b2:8f:d1:7a:6f:80",
+                "IPv4Address": "172.19.0.4/16",
+                "IPv6Address": ""
+            },
+            "28a40c0779f77b4d77243c348a4b857842bd83158f0e167f40aa58a171154028": {
+                "Name": "mysql",
+                "EndpointID": "17a8087a4fb4a1ac4b536e86f0cfcb936358d30a2714910fd2345896c9c29eab",
+                "MacAddress": "9a:5a:fa:8e:62:a7",
+                "IPv4Address": "172.19.0.2/16",
+                "IPv6Address": ""
+            },
+            "462aeedee3730b402685f30ce0ee443ddec9f8eb60224e074674f9408482f777": {
+                "Name": "redis",
+                "EndpointID": "08aacaff285999d33f92993e8ae6dfcbd31156c5e3ee4331c4fafac3e1052518",
+                "MacAddress": "42:85:1d:c3:44:6b",
+                "IPv4Address": "172.19.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.19.0.0/16": {
+                        "IPsInUse": 6,
+                        "DynamicIPsAvailable": 65530
+                    }
+                }
+            }
+        }
+    }
+]
+
+
+PS C:\Users\Harimedha\OneDrive\Desktop\Docker-Networking-Lab> docker images flask-api
+                                                                                                    i Info →   U  In Use
+IMAGE              ID             DISK USAGE   CONTENT SIZE   EXTRA
+flask-api:latest   2395e7e28eab        215MB         52.5MB    U
+PS C:\Users\Harimedha\OneDrive\Desktop\Docker-Networking-Lab> docker ps
+CONTAINER ID   IMAGE                                 COMMAND                  CREATED              STATUS              PORTS                                                                                                                                  NAMES
+1d272755e4a1   flask-api                             "python app.py"          About a minute ago   Up About a minute   0.0.0.0:5001->5001/tcp, [::]:5001->5001/tcp                                                                                            flask
+462aeedee373   redis:7-alpine                        "docker-entrypoint.s…"   About a minute ago   Up About a minute   6379/tcp                                                                                                                               redis
+28a40c0779f7   mysql:8.4                             "docker-entrypoint.s…"   About a minute ago   Up About a minute   3306/tcp, 33060/tcp                                                                                                                    mysql
+8d733375489f   gcr.io/k8s-minikube/kicbase:v0.0.51   "/usr/local/bin/entr…"   5 hours ago          Up 5 hours          127.0.0.1:50081->22/tcp, 127.0.0.1:50085->2376/tcp, 127.0.0.1:50083->5000/tcp, 127.0.0.1:50084->8443/tcp, 127.0.0.1:50082->32443/tcp   minikube
+
+
+PS C:\Users\Harimedha\OneDrive\Desktop\Docker-Networking-Lab> docker logs flask
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.19.0.4:5001/ (Press CTRL+C to quit)
+172.19.0.1 - - [11/Oct/2026 14:18:44] "GET /about HTTP/1.1" 200 -
