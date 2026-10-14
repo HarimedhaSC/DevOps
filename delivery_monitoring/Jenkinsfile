@@ -1,0 +1,30 @@
+﻿pipeline {
+    agent any
+
+    stages {
+        stage('Pre-check Docker') {
+            steps {
+                sh 'docker --version'
+                sh 'docker info'
+            }
+        }
+
+        stage('Build Delivery Metrics Image') {
+            steps {
+                sh 'docker build -t delivery-metrics .'
+            }
+        }
+
+        stage('Validate Prometheus Configuration') {
+            steps {
+                sh '''
+                    docker run --rm \
+                      -v "$WORKSPACE/prometheus.yml:/etc/prometheus/prometheus.yml:ro" \
+                      -v "$WORKSPACE/alert_rules.yml:/etc/prometheus/alert_rules.yml:ro" \
+                      prom/prometheus \
+                      promtool check config /etc/prometheus/prometheus.yml
+                '''
+            }
+        }
+    }
+}
